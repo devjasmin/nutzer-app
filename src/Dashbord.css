@@ -1,0 +1,59 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.welcome-message {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.create-btn,
+.edit-btn {
+  background-color: var(--text);
+  color: var(--bg);
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card {
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background-color: var(--bg);
+  color: var(--text);
+  text-align: center;
+  padding: 10px;
+}

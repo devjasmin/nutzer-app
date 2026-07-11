@@ -1,16 +1,46 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import "./Dashbord.css";
 
 function Dashboard() {
   return (
-    <section className="header">
-      <h1>Nutzer App</h1>
-      <h3>Willkommen zur Nutzer App für Calisthenics</h3>
+    <>
+      <section className="header">
+        <div className="app-title">Nutzer App</div>
+        <div className="welcome-message">
+          Willkommen in unserer Calisthenics Gruppe{" "}
+        </div>
+      </section>
 
-      <nav>
-        <Link to="/nutzer-app/create">Nutzer erstellen</Link>
-        <Link to="/nutzer-app/edit">Nutzer bearbeiten</Link>
-      </nav>
-    </section>
+      <section className="content">
+        <nav className="navigation">
+          <Link className="create-btn" to="/nutzer-app/create">
+            Nutzer erstellen
+          </Link>
+          <Link className="edit-btn" to="/nutzer-app/edit">
+            Nutzer bearbeiten
+          </Link>
+        </nav>
+
+        <div className="content-cards">
+          <div className="card">
+            <div className="user-name">Max Mustermann</div>
+            <p className="user-description">
+              Neuer Nutzer bei unserer Calisthenics Gruppe.
+            </p>
+          </div>
+          <div className="card">
+            <div className="user-name">Mirco Baumann</div>
+            <p className="user-description">
+              Neuer Nutzer bei unserer Calisthenics Gruppe.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="footer">
+        <p>© 2026 Nutzer App. Alle Rechte vorbehalten.</p>
+      </section>
+    </>
   );
 }
 
