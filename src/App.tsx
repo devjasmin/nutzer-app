@@ -1,10 +1,12 @@
 import "./App.css";
-import Dashboard from "./Dashboard";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Dashboard />
+      <h1>Nutzer App</h1>
+
+      <Outlet />
     </>
   );
 }
