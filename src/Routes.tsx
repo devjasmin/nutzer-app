@@ -5,17 +5,17 @@ import Edit from "./Edit";
 
 export const router = createBrowserRouter([
   {
-    path: "/nutzer-app",
+    path: "/",
     element: <Dashboard />,
   },
 
   {
-    path: "/nutzer-app/create",
+    path: "/create",
     element: <Create />,
   },
 
   {
-    path: "/nutzer-app/edit",
+    path: "/edit",
     element: <Edit />,
   },
 ]);
