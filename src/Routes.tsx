@@ -1,21 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import Create from "./Create";
-import Edit from "./Edit";
+import CreateUser from "./pages/CreateUser";
+import UserOverview from "./pages/UserOverview";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Dashboard />,
-  },
-
-  {
-    path: "/create",
-    element: <Create />,
-  },
-
-  {
-    path: "/edit",
-    element: <Edit />,
+    children: [
+      {
+        path: "create",
+        element: <CreateUser />,
+      },
+      {
+        path: "overview",
+        element: <UserOverview />,
+      },
+    ],
   },
 ]);

@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./Dashbord.css";
+import Navigation from "./pages/Navigation";
+import "./pages/Navigation.css";
+import "./pages/CreateUser.css";
+import "./pages/UserOverview.css";
 
 function Dashboard() {
   return (
@@ -11,34 +15,16 @@ function Dashboard() {
         </div>
       </section>
 
-      <section className="content">
-        <nav className="navigation">
-          <Link className="create-btn" to="/nutzer-app/create">
-            Nutzer erstellen
-          </Link>
-          <Link className="edit-btn" to="/nutzer-app/edit">
-            Nutzer bearbeiten
-          </Link>
-        </nav>
+      <section className="content-navi">
+        <Navigation />
 
-        <div className="content-cards">
-          <div className="card">
-            <div className="user-name">Max Mustermann</div>
-            <p className="user-description">
-              Neuer Nutzer bei unserer Calisthenics Gruppe.
-            </p>
-          </div>
-          <div className="card">
-            <div className="user-name">Mirco Baumann</div>
-            <p className="user-description">
-              Neuer Nutzer bei unserer Calisthenics Gruppe.
-            </p>
-          </div>
-        </div>
+        <main className="content-area">
+          <Outlet />
+        </main>
       </section>
 
       <section className="footer">
-        <p>© 2026 Nutzer App. Alle Rechte vorbehalten.</p>
+        <p>© 2026 Nutzer App. Alle Rechte vorbehalten</p>
       </section>
     </>
   );

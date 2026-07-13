@@ -1,0 +1,17 @@
+.overview-title {
+  font-size: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.back-btn {
+  padding: 12px;
+  border:
+    2px solid,
+    black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  width: 80px;
+}

@@ -1,0 +1,36 @@
+.content-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding: 1rem;
+  width: 100%;
+}
+
+.card {
+  background-color: rgb(242, 194, 106);
+  color: black;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 20px;
+}
+
+.save-btn {
+  padding: 12px;
+  border:
+    2px solid,
+    black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  width: 80px;
+}
+
+.back-btn {
+  padding: 12px;
+  border:
+    2px solid,
+    black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  width: 80px;
+}

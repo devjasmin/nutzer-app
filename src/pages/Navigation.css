@@ -1,0 +1,22 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.create-btn,
+.overview-btn {
+  background-color: var(--text);
+  color: var(--bg);
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  width: 150px;
+}

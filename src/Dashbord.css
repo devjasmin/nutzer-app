@@ -13,53 +13,27 @@
 }
 
 .welcome-message {
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 10px;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.content-navi {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: var(--bg);
   color: var(--text);
-  padding: 20px;
 }
 
-.navigation {
+.content-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  gap: 1rem;
-}
-
-.create-btn,
-.edit-btn {
-  background-color: var(--text);
-  color: var(--bg);
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  width: 100px;
-}
-
-.content-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-}
-
-.card {
-  background-color: var(--bg);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 20px;
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .footer {
@@ -67,4 +41,22 @@
   color: var(--text);
   text-align: center;
   padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  .navigation {
+    flex: 0 0 220px;
+  }
+
+  .content-area {
+    flex: 1;
+  }
 }
