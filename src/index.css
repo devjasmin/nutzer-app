@@ -1,5 +1,5 @@
 :root {
-  --text: #ff4500;
+  --text: rgb(255, 95, 0);
   --bg: #1a1a1a;
   --border: #e5e4e7;
 
@@ -11,13 +11,7 @@
   background: var(--bg);
 }
 
-#root {
-  width: 900px;
-  max-width: 100%;
-  margin: 0 auto;
-  min-height: 100svh;
-}
-
 body {
   margin: 0;
+  padding: 0;
 }
