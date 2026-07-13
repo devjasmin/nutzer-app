@@ -7,11 +7,12 @@
 }
 
 .back-btn {
-  padding: 12px;
+  padding: 10px;
   border:
     2px solid,
     black;
   border-radius: 5px;
   margin-top: 1rem;
   width: 80px;
+  background-color: rgb(191, 187, 187);
 }

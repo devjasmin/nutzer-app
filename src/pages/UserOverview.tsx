@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function UserOverview() {
   return (
     <>
@@ -12,7 +14,9 @@ function UserOverview() {
           <div className="lastName">Baumann</div>
         </div>
       </div>
-      <button className="back-btn">Zurück</button>
+      <Link className="back-btn" to="/">
+        Zurück
+      </Link>
     </>
   );
 }

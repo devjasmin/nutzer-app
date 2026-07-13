@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function CreateUser() {
   return (
     <div className="content-cards">
@@ -17,8 +19,11 @@ function CreateUser() {
           <button className="save-btn" type="submit">
             Speichern
           </button>
-        </form>
-        <button className="back-btn">Zurück</button>
+        </form>{" "}
+        <br />
+        <Link className="back-btn" to="/">
+          Zurück
+        </Link>
       </div>
     </div>
   );
