@@ -18,5 +18,11 @@
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-  width: 150px;
+  width: 100px;
+}
+
+.create-btn:hover,
+.overview-btn:hover {
+  background-color: rgba(82, 201, 201, 0.611);
+  transition: ease 0.3s;
 }

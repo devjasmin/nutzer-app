@@ -15,21 +15,32 @@
   margin-bottom: 20px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border-radius: 6px;
+  line-height: 3;
+}
+
 .save-btn {
-  padding: 12px;
-  border:
-    2px solid,
-    black;
+  padding: 10px;
+  border: 2px, solid, black;
   border-radius: 5px;
   margin-top: 1rem;
   width: 80px;
+  background-color: rgb(191, 187, 187);
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
 }
 
 .back-btn {
   padding: 10px;
-  border:
-    2px solid,
-    black;
+  border: 2px, solid, black;
   border-radius: 5px;
   margin-top: 1rem;
   width: 80px;

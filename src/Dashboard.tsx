@@ -4,8 +4,16 @@ import Navigation from "./pages/Navigation";
 import "./pages/Navigation.css";
 import "./pages/CreateUser.css";
 import "./pages/UserOverview.css";
+import { useState } from "react";
+import type { User } from "./pages/User";
 
 function Dashboard() {
+  const [users, setUsers] = useState<User[]>([]);
+
+  function addUser(user: User) {
+    setUsers((previousUsers) => [...previousUsers, user]);
+  }
+
   return (
     <>
       <section className="header">
@@ -19,7 +27,7 @@ function Dashboard() {
         <Navigation />
 
         <main className="content-area">
-          <Outlet />
+          <Outlet context={{ users, addUser }} />
         </main>
       </section>
 

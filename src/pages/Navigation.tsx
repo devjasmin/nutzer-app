@@ -4,10 +4,10 @@ function Navigation() {
   return (
     <nav className="navigation">
       <Link className="overview-btn" to="overview">
-        Nutzerübersicht
+        Übersicht
       </Link>
       <Link className="create-btn" to="create">
-        Nutzer erstellen
+        Erstellen
       </Link>
     </nav>
   );
