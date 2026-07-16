@@ -19,7 +19,7 @@ function CreateUser() {
   const [email, setEmail] = useState("");
   const [post, setPost] = useState("");
   const [phone, setPhone] = useState("");
-  const [website, setWebsite] = useState("");
+  const [fitness, setFitness] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,8 +31,6 @@ function CreateUser() {
     try {
       const image = await getImagesByGender(gender);
 
-      console.log("Geladene Bild-URL", image);
-
       const newUser: User = {
         id: crypto.randomUUID(),
         username,
@@ -42,7 +40,7 @@ function CreateUser() {
         email,
         post,
         phone,
-        website,
+        fitness,
       };
 
       addUser(newUser);
@@ -93,7 +91,7 @@ function CreateUser() {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            // required
+            //required
           />
 
           <label htmlFor="postadresse">Postadresse</label>
@@ -114,17 +112,17 @@ function CreateUser() {
             name="phone"
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
-            // required
+            //required
           />
 
-          <label htmlFor="website">Webseite(https://)</label>
+          <label htmlFor="fitness">Fitnesslevel</label>
           <input
-            id="website"
-            type="url"
-            name="url"
-            value={website}
-            onChange={(event) => setWebsite(event.target.value)}
-            // required
+            id="fitness"
+            type="string"
+            name="fitness"
+            value={fitness}
+            onChange={(event) => setFitness(event.target.value)}
+            //required
           />
           <br />
 

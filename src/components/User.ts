@@ -7,5 +7,5 @@ export type User = {
   email: string;
   post: string;
   phone: string;
-  website: string;
+  fitness: string;
 };
