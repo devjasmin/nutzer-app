@@ -13,11 +13,13 @@
   border-radius: 4px;
   padding: 1rem;
   margin-bottom: 20px;
+  width: 250px;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 input {
@@ -25,17 +27,24 @@ input {
   line-height: 3;
 }
 
+#gender-select {
+  height: 32px;
+  font-size: 15px;
+}
+
 .save-btn {
   padding: 10px;
   border: 2px, solid, black;
   border-radius: 5px;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 4rem;
   width: 80px;
   background-color: rgb(191, 187, 187);
   text-decoration: none;
   color: black;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .back-btn {
@@ -43,8 +52,12 @@ input {
   border: 2px, solid, black;
   border-radius: 5px;
   margin-top: 1rem;
+  margin-left: 4rem;
   width: 80px;
   background-color: rgb(191, 187, 187);
   text-decoration: none;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

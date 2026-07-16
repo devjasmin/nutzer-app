@@ -3,6 +3,7 @@ export type User = {
   username: string;
   dateOfBirth: string;
   gender: string;
+  image: string;
   email: string;
   post: string;
   phone: string;

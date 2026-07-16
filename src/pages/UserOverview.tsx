@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import type { User } from "./User";
+import type { User } from "../components/User";
 import { useOutletContext } from "react-router-dom";
-import React from "react";
 
 type DashboardContext = {
   users: User[];
@@ -18,6 +17,11 @@ function UserOverview() {
         {users.length === 0 && <p>Noch keine Mitglieder vorhanden...</p>}
         {users.map((mitglied) => (
           <div key={mitglied.id} className="card">
+            <img
+              className="image"
+              src={mitglied.image}
+              alt={"Profilbild von ${mitglied.username"}
+            />
             <div className="Benutzername">{mitglied.username}</div>
             <div className="Geburtsdatum">{mitglied.dateOfBirth}</div>
             <div className="Geschlecht">{mitglied.gender}</div>

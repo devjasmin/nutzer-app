@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import "./Dashbord.css";
-import Navigation from "./pages/Navigation";
-import "./pages/Navigation.css";
+import Navigation from "./components/Navigation";
+import "./components/Navigation.css";
 import "./pages/CreateUser.css";
 import "./pages/UserOverview.css";
 import { useState } from "react";
-import type { User } from "./pages/User";
+import type { User } from "./components/User";
 
 function Dashboard() {
   const [users, setUsers] = useState<User[]>([]);

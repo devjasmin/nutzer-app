@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import type { User } from "../pages/User";
+import type { User } from "../components/User";
 import { useState } from "react";
+import { getImagesByGender, type Gender } from "../API/randomUser";
 
 type DashboardContext = {
   users: User[];
@@ -13,33 +14,42 @@ function CreateUser() {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
-  // console.log("username state:", username);
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState<Gender | "">("");
   const [email, setEmail] = useState("");
-  // console.log("email state:", email);
   const [post, setPost] = useState("");
-  // console.log("post state:", post);
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
-  // console.log("website state:", website);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const newUser: User = {
-      id: crypto.randomUUID(),
-      username,
-      dateOfBirth,
-      gender,
-      email,
-      post,
-      phone,
-      website,
-    };
+    if (!gender) {
+      return;
+    }
 
-    addUser(newUser);
-    navigate("/overview");
+    try {
+      const image = await getImagesByGender(gender);
+
+      console.log("Geladene Bild-URL", image);
+
+      const newUser: User = {
+        id: crypto.randomUUID(),
+        username,
+        dateOfBirth,
+        gender,
+        image,
+        email,
+        post,
+        phone,
+        website,
+      };
+
+      addUser(newUser);
+      navigate("/overview");
+    } catch (error) {
+      console.error("Bild konnte nicht geladen werden, error");
+    }
   };
 
   return (
@@ -53,7 +63,6 @@ function CreateUser() {
             type="text"
             value={username}
             onChange={(event) => {
-              console.log(event.target.value);
               setUsername(event.target.value);
             }}
           />
@@ -66,12 +75,16 @@ function CreateUser() {
             onChange={(event) => setDateOfBirth(event.target.value)}
           />
 
-          <label htmlFor="gender">Geschlecht</label>
-          <select name="gender" id="gender-select">
-            <option value=""> -- Please choose an option--</option>
+          <label htmlFor="gender-select">Geschlecht</label>
+          <select
+            name="gender"
+            id="gender-select"
+            value={gender}
+            onChange={(event) => setGender(event.target.value as Gender | "")}
+          >
+            <option value=""> -- Geschlecht auswählen --</option>
             <option value="female">weiblich</option>
             <option value="male">männlich</option>
-            <option value="divers">anderes</option>
           </select>
 
           <label htmlFor="email">E-Mail</label>
