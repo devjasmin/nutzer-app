@@ -1,0 +1,17 @@
+.card-container {
+  border: 2px solid white;
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 0.5rem;
+  padding: 0.8rem;
+}
+
+.user-image {
+  padding: 1rem;
+  width: 100px;
+  height: auto;
+}
+.benutzername {
+  display: flex;
+  align-items: center;
+}

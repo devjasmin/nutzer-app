@@ -8,6 +8,7 @@ import {
   faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
 import type { User } from "../components/User";
+import "./UserCard.css";
 
 type UserCardProps = {
   user: User;
@@ -21,7 +22,7 @@ function UserCard({ user }: UserCardProps) {
         src={user.image}
         alt={`Profilbild von ${user.username}`}
       />
-      <div className="Benutzername">{user.username}</div>
+      <div className="benutzername">{user.username}</div>
       <div className="geburtsdatum">
         <FontAwesomeIcon icon={faCakeCandles} />
         {user.dateOfBirth}

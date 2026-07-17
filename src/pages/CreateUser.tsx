@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import type { User } from "../components/User";
-import { useState } from "react";
+import { useReducer } from "react";
 import { getImagesByGender, type Gender } from "../API/randomUser";
+import { infoReducer, initialState } from "../components/Hook/infoReducer";
 
 type DashboardContext = {
   users: User[];
@@ -13,34 +14,28 @@ function CreateUser() {
   const { addUser } = useOutletContext<DashboardContext>();
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [gender, setGender] = useState<Gender | "">("");
-  const [email, setEmail] = useState("");
-  const [post, setPost] = useState("");
-  const [phone, setPhone] = useState("");
-  const [fitness, setFitness] = useState("");
+  const [state, dispatch] = useReducer(infoReducer, initialState);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!gender) {
+    if (!state.gender) {
       return;
     }
 
     try {
-      const image = await getImagesByGender(gender);
+      const image = await getImagesByGender(state.gender);
 
       const newUser: User = {
         id: crypto.randomUUID(),
-        username,
-        dateOfBirth,
-        gender,
+        username: state.username,
+        dateOfBirth: state.dateOfBirth,
+        gender: state.gender,
         image,
-        email,
-        post,
-        phone,
-        fitness,
+        email: state.email,
+        post: state.post,
+        phone: state.phone,
+        fitness: state.fitness,
       };
 
       addUser(newUser);
@@ -59,9 +54,15 @@ function CreateUser() {
           <input
             id="username"
             type="text"
-            value={username}
+            placeholder="Benutzername"
+            value={state.username}
             onChange={(event) => {
-              setUsername(event.target.value);
+              dispatch({
+                type: "change",
+                field: "username",
+                value: event.target.value,
+                //required
+              });
             }}
           />
 
@@ -69,16 +70,29 @@ function CreateUser() {
           <input
             id="dateOfBirth"
             type="date"
-            value={dateOfBirth}
-            onChange={(event) => setDateOfBirth(event.target.value)}
+            value={state.dateOfBirth}
+            onChange={(event) => {
+              dispatch({
+                type: "change",
+                field: "dateOfBirth",
+                value: event.target.value,
+                //required
+              });
+            }}
           />
 
           <label htmlFor="gender-select">Geschlecht</label>
           <select
             name="gender"
             id="gender-select"
-            value={gender}
-            onChange={(event) => setGender(event.target.value as Gender | "")}
+            value={state.gender}
+            onChange={(event) => {
+              dispatch({
+                type: "change",
+                field: "gender",
+                value: event.target.value as Gender | "",
+              });
+            }}
           >
             <option value=""> -- Geschlecht auswählen --</option>
             <option value="female">weiblich</option>
@@ -89,41 +103,71 @@ function CreateUser() {
           <input
             id="email"
             type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            //required
+            placeholder="Emailadresse"
+            value={state.email}
+            onChange={(event) => {
+              dispatch({
+                type: "change",
+                field: "email",
+                value: event.target.value,
+                //required
+              });
+            }}
           />
 
           <label htmlFor="postadresse">Postadresse</label>
           <input
             id="postadresse"
             type="text"
-            value={post}
-            onChange={(event) => setPost(event.target.value)}
+            placeholder="Adresse"
+            value={state.post}
+            onChange={(event) => {
+              dispatch({
+                type: "change",
+                field: "post",
+                value: event.target.value,
+                //required
+              });
+            }}
           />
 
           <label htmlFor="phone">
             Telefonnummer <br />
-            <small>Format: 123-456-78-90</small>
+            <small>Format:</small>
           </label>
           <input
             id="phone"
             type="tel"
             name="phone"
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-            //required
+            placeholder="Format: 123-456-78-90"
+            value={state.phone}
+            onChange={(event) => {
+              dispatch({
+                type: "change",
+                field: "phone",
+                value: event.target.value,
+                //required
+              });
+            }}
           />
 
           <label htmlFor="fitness">Fitnesslevel</label>
           <input
             id="fitness"
             type="string"
+            placeholder="Zahl zwischen 1 und 10"
             name="fitness"
-            value={fitness}
-            onChange={(event) => setFitness(event.target.value)}
-            //required
+            value={state.fitness}
+            onChange={(event) => {
+              dispatch({
+                type: "change",
+                field: "fitness",
+                value: event.target.value,
+                //required
+              });
+            }}
           />
+
           <br />
 
           <button className="save-btn" type="submit">

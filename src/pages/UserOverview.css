@@ -1,3 +1,8 @@
+.content-cards {
+  display: flex;
+  flex-direction: column;
+}
+
 .overview-title {
   font-size: 2rem;
   padding: 1rem;
