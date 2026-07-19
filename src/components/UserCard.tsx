@@ -17,6 +17,8 @@ type UserCardProps = {
 function UserCard({ user }: UserCardProps) {
   return (
     <div className="card-container">
+      <div className="edit-btn">Bearbeiten</div>
+      <div className="delete-btn">Löschen</div>
       <img
         className="user-image"
         src={user.image}
