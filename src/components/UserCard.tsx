@@ -19,45 +19,48 @@ type UserCardProps = {
 function UserCard({ user }: UserCardProps) {
   return (
     <div className="card-container">
-      <img
-        className="user-image"
-        src={user.image}
-        alt={`Profilbild von ${user.username}`}
-      />
-      <div className="benutzername">{user.username}</div>
-
+      <div className="title-container">
+        <img
+          className="user-image"
+          src={user.image}
+          alt={`Profilbild von ${user.username}`}
+        />
+        <div className="benutzername">{user.username}</div>
+      </div>
       <div className="button-container">
-        <div className="edit-btn">
+        <button className="edit-btn">
           <FontAwesomeIcon icon={faPen} />
-        </div>
-        <div className="delete-btn">
+        </button>
+        <button className="delete-btn">
           <FontAwesomeIcon icon={faX} />
+        </button>
+      </div>
+      <div className="info-container">
+        <div className="geburtsdatum">
+          <FontAwesomeIcon icon={faCakeCandles} />
+          {user.dateOfBirth}
         </div>
-      </div>
-      <div className="geburtsdatum">
-        <FontAwesomeIcon icon={faCakeCandles} />
-        {user.dateOfBirth}
-      </div>
-      <div className="geschlecht">
-        <FontAwesomeIcon icon={faMarsAndVenus} />
-        {user.gender}
-      </div>
+        <div className="geschlecht">
+          <FontAwesomeIcon icon={faMarsAndVenus} />
+          {user.gender}
+        </div>
 
-      <div className="e-Mailadresse">
-        <FontAwesomeIcon icon={faAt} />
-        {user.email}
-      </div>
-      <div className="postadresse">
-        <FontAwesomeIcon icon={faEnvelope} />
-        {user.post}
-      </div>
-      <div className="telefonnummer">
-        <FontAwesomeIcon icon={faMobile} />
-        {user.phone}
-      </div>
-      <div className="fitnesslevel">
-        <FontAwesomeIcon icon={faDumbbell} />
-        {user.fitness}
+        <div className="email">
+          <FontAwesomeIcon icon={faAt} />
+          {user.email}
+        </div>
+        <div className="postadresse">
+          <FontAwesomeIcon icon={faEnvelope} />
+          {user.post}
+        </div>
+        <div className="telefonnummer">
+          <FontAwesomeIcon icon={faMobile} />
+          {user.phone}
+        </div>
+        <div className="fitnesslevel">
+          <FontAwesomeIcon icon={faDumbbell} />
+          {user.fitness}
+        </div>
       </div>
     </div>
   );
