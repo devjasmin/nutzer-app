@@ -1,21 +1,33 @@
 .card-container {
   border: 2px solid white;
   display: grid;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
   gap: 0.8rem;
   padding: 1rem;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100px;
+}
+
 .edit-btn,
 .delete-btn {
-  background-color: rgb(194, 151, 151);
+  background-color: rgb(255, 95, 0);
   color: black;
   padding: 0.5rem;
+  margin: 1rem;
   border-radius: 5px;
   cursor: pointer;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
-    background-color: rgb(168, 131, 131);
+    background-color: rgb(148, 144, 143);
     color: black;
   }
 }
@@ -27,5 +39,8 @@
 }
 .benutzername {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }

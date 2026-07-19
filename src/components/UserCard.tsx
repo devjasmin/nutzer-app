@@ -6,9 +6,11 @@ import {
   faAt,
   faMobile,
   faDumbbell,
+  faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import type { User } from "../components/User";
 import "./UserCard.css";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 type UserCardProps = {
   user: User;
@@ -17,14 +19,21 @@ type UserCardProps = {
 function UserCard({ user }: UserCardProps) {
   return (
     <div className="card-container">
-      <div className="edit-btn">Bearbeiten</div>
-      <div className="delete-btn">Löschen</div>
       <img
         className="user-image"
         src={user.image}
         alt={`Profilbild von ${user.username}`}
       />
       <div className="benutzername">{user.username}</div>
+
+      <div className="button-container">
+        <div className="edit-btn">
+          <FontAwesomeIcon icon={faPen} />
+        </div>
+        <div className="delete-btn">
+          <FontAwesomeIcon icon={faX} />
+        </div>
+      </div>
       <div className="geburtsdatum">
         <FontAwesomeIcon icon={faCakeCandles} />
         {user.dateOfBirth}
