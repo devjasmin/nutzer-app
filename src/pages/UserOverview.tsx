@@ -6,10 +6,11 @@ import UserCard from "../components/UserCard";
 type DashboardContext = {
   users: User[];
   addUser: (user: User) => void;
+  deleteUser: (id: string) => void;
 };
 
 function UserOverview() {
-  const { users } = useOutletContext<DashboardContext>();
+  const { users, deleteUser } = useOutletContext<DashboardContext>();
 
   return (
     <>
@@ -18,7 +19,7 @@ function UserOverview() {
         {users.length === 0 && <p>Noch keine Mitglieder vorhanden...</p>}
 
         {users.map((mitglied) => (
-          <UserCard key={mitglied.id} user={mitglied} />
+          <UserCard key={mitglied.id} user={mitglied} deleteUser={deleteUser} />
         ))}
       </div>
       <Link className="back-btn" to="/">

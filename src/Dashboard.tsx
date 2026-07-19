@@ -14,6 +14,10 @@ function Dashboard() {
     setUsers((previousUsers) => [...previousUsers, user]);
   }
 
+  function deleteUser(id: string) {
+    setUsers((previousUsers) => previousUsers.filter((user) => user.id !== id));
+  }
+
   return (
     <>
       <section className="header">
@@ -27,7 +31,7 @@ function Dashboard() {
         <Navigation />
 
         <main className="content-area">
-          <Outlet context={{ users, addUser }} />
+          <Outlet context={{ users, addUser, deleteUser }} />
         </main>
       </section>
 
