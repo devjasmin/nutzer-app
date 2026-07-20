@@ -9,7 +9,7 @@ import {
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import type { User } from "../components/User";
-import "./UserCard.css";
+import "./UserCard.scss";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
 type UserCardProps = {

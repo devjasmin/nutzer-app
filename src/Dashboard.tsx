@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import "./Dashbord.css";
+import "./Dashbord.scss";
 import Navigation from "./components/Navigation";
-import "./components/Navigation.css";
-import "./pages/CreateUser.css";
-import "./pages/UserOverview.css";
+import "./components/Navigation.scss";
+import "./pages/CreateUser.scss";
+import "./pages/UserOverview.scss";
 import { useState } from "react";
 import type { User } from "./components/User";
 
