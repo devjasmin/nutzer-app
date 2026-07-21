@@ -94,7 +94,7 @@ function CreateUser() {
     try {
       const image = userToEdit
         ? userToEdit.image
-        : await getImagesByGender(state.gender);
+        : await getImagesByGender(state.gender as Gender);
 
       const userData: User = {
         id: id ?? crypto.randomUUID(),

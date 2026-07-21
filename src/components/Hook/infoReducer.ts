@@ -10,7 +10,20 @@ export const initialState = {
   fitness: "",
 };
 
-export function infoReducer(state, action) {
+type ChangeAction = {
+  type: "change";
+  field: string;
+  value: string;
+};
+
+type LoadAction = {
+  type: "load";
+  userData: typeof initialState;
+};
+
+type Action = ChangeAction | LoadAction;
+
+export function infoReducer(state: typeof initialState, action: Action) {
   if (action.type === "change") {
     return {
       ...state,

@@ -41,7 +41,7 @@ input {
 
 .save-btn {
   padding: 10px;
-  border: 2px, solid, black;
+  border: 2px solid black;
   border-radius: 5px;
   margin-bottom: 1rem;
   margin-left: 4rem;
@@ -56,7 +56,7 @@ input {
 
 .back-btn {
   padding: 10px;
-  border: 2px, solid, black;
+  border: 2px solid black;
   border-radius: 5px;
   margin-top: 1rem;
   margin-left: 4rem;
@@ -67,4 +67,42 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .content-cards {
+    align-items: stretch;
+    justify-content: flex-start;
+    max-width: 700px;
+    margin-inline: auto;
+    padding: 2rem;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 520px;
+    margin-inline: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  form {
+    gap: 0.8rem;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #gender-select {
+    width: 100%;
+  }
+
+  .save-btn,
+  .back-btn {
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

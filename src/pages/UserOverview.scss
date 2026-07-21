@@ -17,3 +17,21 @@
   background-color: rgb(191, 187, 187);
   width: 80px;
 }
+
+@media (min-width: 768px) {
+  .content-cards {
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .overview-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .back-btn {
+    width: 120px;
+    padding: 12px;
+  }
+}
