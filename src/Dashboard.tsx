@@ -18,6 +18,12 @@ function Dashboard() {
     setUsers((previousUsers) => previousUsers.filter((user) => user.id !== id));
   }
 
+  function updateUser(id: string, updateUser: User) {
+    setUsers((previousUsers) =>
+      previousUsers.map((user) => (user.id === id ? updateUser : user)),
+    );
+  }
+
   return (
     <>
       <section className="header">
@@ -31,7 +37,7 @@ function Dashboard() {
         <Navigation />
 
         <main className="content-area">
-          <Outlet context={{ users, addUser, deleteUser }} />
+          <Outlet context={{ users, addUser, deleteUser, updateUser }} />
         </main>
       </section>
 

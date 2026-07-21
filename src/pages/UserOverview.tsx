@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import type { User } from "../components/User";
-import { useOutletContext } from "react-router-dom";
 import UserCard from "../components/UserCard";
 
 type DashboardContext = {
@@ -12,6 +11,12 @@ type DashboardContext = {
 function UserOverview() {
   const { users, deleteUser } = useOutletContext<DashboardContext>();
 
+  const navigate = useNavigate();
+
+  function handleEdit(id: string) {
+    navigate(`/create/${id}`);
+  }
+
   return (
     <>
       <h2 className="overview-title">Mitglieder</h2>
@@ -19,7 +24,12 @@ function UserOverview() {
         {users.length === 0 && <p>Noch keine Mitglieder vorhanden...</p>}
 
         {users.map((mitglied) => (
-          <UserCard key={mitglied.id} user={mitglied} deleteUser={deleteUser} />
+          <UserCard
+            key={mitglied.id}
+            user={mitglied}
+            deleteUser={deleteUser}
+            editUser={handleEdit}
+          />
         ))}
       </div>
       <Link className="back-btn" to="/">

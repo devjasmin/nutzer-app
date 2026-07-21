@@ -15,9 +15,10 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 type UserCardProps = {
   user: User;
   deleteUser: (id: string) => void;
+  editUser: (id: string) => void;
 };
 
-function UserCard({ user, deleteUser }: UserCardProps) {
+function UserCard({ user, deleteUser, editUser }: UserCardProps) {
   return (
     <div className="card-container">
       <div className="title-container">
@@ -29,7 +30,7 @@ function UserCard({ user, deleteUser }: UserCardProps) {
         <div className="benutzername">{user.username}</div>
       </div>
       <div className="button-container">
-        <button className="edit-btn">
+        <button onClick={() => editUser(user.id)} className="edit-btn">
           <FontAwesomeIcon icon={faPen} />
         </button>
         <button onClick={() => deleteUser(user.id)} className="delete-btn">

@@ -17,5 +17,11 @@ export function infoReducer(state, action) {
       [action.field]: action.value,
     };
   }
+  if (action.type === "load") {
+    return {
+      ...action.userData,
+    };
+  }
+
   return state;
 }

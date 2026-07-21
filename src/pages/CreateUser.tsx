@@ -1,20 +1,48 @@
-import { Link } from "react-router-dom";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 import type { User } from "../components/User";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { getImagesByGender, type Gender } from "../API/randomUser";
 import { infoReducer, initialState } from "../components/Hook/infoReducer";
 
 type DashboardContext = {
   users: User[];
   addUser: (user: User) => void;
+  updateUser: (id: string, updateUser: User) => void;
 };
 
 function CreateUser() {
-  const { addUser } = useOutletContext<DashboardContext>();
+  const { users, addUser, updateUser } = useOutletContext<DashboardContext>();
+
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [state, dispatch] = useReducer(infoReducer, initialState);
+
+  const userToEdit = users.find((user) => user.id === id);
+
+  useEffect(() => {
+    if (!userToEdit) {
+      return;
+    }
+
+    dispatch({
+      type: "load",
+      userData: {
+        username: userToEdit.username,
+        dateOfBirth: userToEdit.dateOfBirth,
+        gender: userToEdit.gender,
+        email: userToEdit.email,
+        post: userToEdit.post,
+        phone: userToEdit.phone,
+        fitness: userToEdit.fitness,
+      },
+    });
+  }, [userToEdit]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -24,10 +52,12 @@ function CreateUser() {
     }
 
     try {
-      const image = await getImagesByGender(state.gender);
+      const image = userToEdit
+        ? userToEdit.image
+        : await getImagesByGender(state.gender);
 
-      const newUser: User = {
-        id: crypto.randomUUID(),
+      const userData: User = {
+        id: id ?? crypto.randomUUID(),
         username: state.username,
         dateOfBirth: state.dateOfBirth,
         gender: state.gender,
@@ -38,10 +68,15 @@ function CreateUser() {
         fitness: state.fitness,
       };
 
-      addUser(newUser);
+      if (id) {
+        updateUser(id, userData);
+      } else {
+        addUser(userData);
+      }
+
       navigate("/overview");
     } catch (error) {
-      console.error("Bild konnte nicht geladen werden, error");
+      console.error("Bild konnte nicht geladen werden:", error);
     }
   };
 

@@ -13,6 +13,10 @@ export const router = createBrowserRouter([
         element: <CreateUser />,
       },
       {
+        path: "create/:id",
+        element: <CreateUser />,
+      },
+      {
         path: "overview",
         element: <UserOverview />,
       },
