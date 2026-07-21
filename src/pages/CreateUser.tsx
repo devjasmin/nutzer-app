@@ -44,20 +44,50 @@ function CreateUser() {
     });
   }, [userToEdit]);
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState({
+    username: "",
+    dateOfBirth: "",
+    gender: "",
+    email: "",
+    post: "",
+    phone: "",
+    fitness: "",
+  });
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (
-      !state.username.trim() ||
-      !state.dateOfBirth ||
-      !state.gender ||
-      !state.email ||
-      !state.post ||
-      !state.phone
-    ) {
-      setErrorMessage("Bitte füllen Sie alle Felder aus.");
+    const newErrors = {
+      username: state.username.trim()
+        ? ""
+        : "Bitte geben Sie einen Benutzernamen ein.",
+
+      dateOfBirth: state.dateOfBirth
+        ? ""
+        : "Bitte wählen Sie ein Geburtsdatum aus.",
+
+      gender: state.gender ? "" : "Bitte wählen Sie ein Geschlecht aus.",
+
+      email: state.email.trim()
+        ? ""
+        : "Bitte geben Sie eine E-Mail-Adresse ein.",
+
+      post: state.post.trim() ? "" : "Bitte geben Sie eine Postadresse ein.",
+
+      phone: state.phone.trim()
+        ? ""
+        : "Bitte geben Sie eine Telefonnummer ein.",
+
+      fitness: state.fitness.trim()
+        ? ""
+        : "Bitte geben Sie ein Fitnesslevel ein.",
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((error) => error != "");
+
+    if (hasErrors) {
       return;
     }
 
@@ -109,6 +139,9 @@ function CreateUser() {
               });
             }}
           />
+          {errors.username && (
+            <p className="error-message">{errors.username}</p>
+          )}
 
           <label htmlFor="dateOfBirth">Geburtsdatum</label>
           <input
@@ -121,8 +154,15 @@ function CreateUser() {
                 field: "dateOfBirth",
                 value: event.target.value,
               });
+              setErrors((previousErrors) => ({
+                ...previousErrors,
+                dateOfBirth: "",
+              }));
             }}
           />
+          {errors.dateOfBirth && (
+            <p className="error-message">{errors.dateOfBirth}</p>
+          )}
 
           <label htmlFor="gender-select">Geschlecht</label>
           <select
@@ -156,6 +196,7 @@ function CreateUser() {
               });
             }}
           />
+          {errors.email && <p className="error-message">{errors.email}</p>}
 
           <label htmlFor="postadresse">Postadresse</label>
           <input
@@ -171,10 +212,10 @@ function CreateUser() {
               });
             }}
           />
+          {errors.post && <p className="error-message">{errors.post}</p>}
 
           <label htmlFor="phone">
             Telefonnummer <br />
-            <small>Format:</small>
           </label>
           <input
             id="phone"
@@ -190,6 +231,7 @@ function CreateUser() {
               });
             }}
           />
+          {errors.phone && <p className="error-message">{errors.phone}</p>}
 
           <label htmlFor="fitness">Fitnesslevel</label>
           <input
@@ -206,8 +248,9 @@ function CreateUser() {
               });
             }}
           />
+          {errors.fitness && <p className="error-message">{errors.fitness}</p>}
 
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <br />
           <button className="save-btn" type="submit">
             Speichern
           </button>

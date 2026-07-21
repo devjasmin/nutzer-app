@@ -4,11 +4,16 @@ import Navigation from "./components/Navigation";
 import "./components/Navigation.scss";
 import "./pages/CreateUser.scss";
 import "./pages/UserOverview.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { User } from "./components/User";
 
 function Dashboard() {
-  const [users, setUsers] = useState<User[]>([]);
+  const STORAGE_KEY = "members";
+  const [users, setUsers] = useState<User[]>(() => {
+    const savedMembers = localStorage.getItem(STORAGE_KEY);
+
+    return savedMembers ? JSON.parse(savedMembers) : [];
+  });
 
   function addUser(user: User) {
     setUsers((previousUsers) => [...previousUsers, user]);
@@ -23,6 +28,10 @@ function Dashboard() {
       previousUsers.map((user) => (user.id === id ? updateUser : user)),
     );
   }
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  }, [users]);
 
   return (
     <>
