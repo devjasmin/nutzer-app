@@ -5,7 +5,7 @@ import {
   useParams,
 } from "react-router-dom";
 import type { User } from "../components/User";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { getImagesByGender, type Gender } from "../API/randomUser";
 import { infoReducer, initialState } from "../components/Hook/infoReducer";
 
@@ -44,10 +44,20 @@ function CreateUser() {
     });
   }, [userToEdit]);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!state.gender) {
+    if (
+      !state.username.trim() ||
+      !state.dateOfBirth ||
+      !state.gender ||
+      !state.email ||
+      !state.post ||
+      !state.phone
+    ) {
+      setErrorMessage("Bitte füllen Sie alle Felder aus.");
       return;
     }
 
@@ -84,7 +94,7 @@ function CreateUser() {
     <div className="content-cards">
       <div className="card">
         <h2>Formular</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <label htmlFor="username">Benutzername</label>
           <input
             id="username"
@@ -96,7 +106,6 @@ function CreateUser() {
                 type: "change",
                 field: "username",
                 value: event.target.value,
-                //required
               });
             }}
           />
@@ -111,7 +120,6 @@ function CreateUser() {
                 type: "change",
                 field: "dateOfBirth",
                 value: event.target.value,
-                //required
               });
             }}
           />
@@ -145,7 +153,6 @@ function CreateUser() {
                 type: "change",
                 field: "email",
                 value: event.target.value,
-                //required
               });
             }}
           />
@@ -161,7 +168,6 @@ function CreateUser() {
                 type: "change",
                 field: "post",
                 value: event.target.value,
-                //required
               });
             }}
           />
@@ -181,7 +187,6 @@ function CreateUser() {
                 type: "change",
                 field: "phone",
                 value: event.target.value,
-                //required
               });
             }}
           />
@@ -198,13 +203,11 @@ function CreateUser() {
                 type: "change",
                 field: "fitness",
                 value: event.target.value,
-                //required
               });
             }}
           />
 
-          <br />
-
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <button className="save-btn" type="submit">
             Speichern
           </button>

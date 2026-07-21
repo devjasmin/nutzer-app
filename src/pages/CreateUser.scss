@@ -33,6 +33,12 @@ input {
   font-size: 15px;
 }
 
+.error-message {
+  font-size: 1rem;
+  font-weight: 500;
+  color: red;
+}
+
 .save-btn {
   padding: 10px;
   border: 2px, solid, black;
